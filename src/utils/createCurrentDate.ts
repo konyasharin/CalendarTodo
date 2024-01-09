@@ -4,6 +4,7 @@ export type CurrentDate = {
   day: number;
   hours: number;
   minutes: number;
+  localeMonth: string;
 };
 
 function createCurrentDate(): CurrentDate {
@@ -14,6 +15,7 @@ function createCurrentDate(): CurrentDate {
     day: date.getDay(),
     hours: date.getHours(),
     minutes: date.getMinutes(),
+    localeMonth: date.toLocaleString('default', { month: 'long' }),
   };
 }
 
