@@ -1,0 +1,12 @@
+.cell{
+    border: 1px solid #E8E8E8;
+    height: 192px;
+    vertical-align: top;
+    padding: 12px;
+}
+
+.date{
+    font-size: 21px;
+    font-weight: 500;
+    color: #969696;
+}

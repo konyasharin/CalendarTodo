@@ -1,4 +1,6 @@
-export type CurrentDate = {
+import { TrimmedDate } from './createDate.ts';
+
+export type DateObject = {
   year: number;
   month: number;
   day: number;
@@ -7,8 +9,10 @@ export type CurrentDate = {
   localeMonth: string;
 };
 
-function createCurrentDate(): CurrentDate {
-  const date = new Date();
+function createDateObject(dateObject: TrimmedDate | null = null): DateObject {
+  const date = dateObject
+    ? new Date(dateObject.year, dateObject.month)
+    : new Date();
   return {
     year: date.getFullYear(),
     month: date.getMonth(),
@@ -19,4 +23,4 @@ function createCurrentDate(): CurrentDate {
   };
 }
 
-export default createCurrentDate;
+export default createDateObject;
