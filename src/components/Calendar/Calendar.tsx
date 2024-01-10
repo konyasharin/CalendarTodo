@@ -5,6 +5,31 @@ import Cell from './Cell/Cell.tsx';
 import { ReactNode, useState } from 'react';
 import getMonthCountOfDays from '../../utils/getMonthCountOfDays.ts';
 import getPrevMonthDateObject from '../../utils/getPrevMonthDateObject.ts';
+import getNextMonthDateObject from '../../utils/getNextMonthDateObject.ts';
+
+export type Todo = {
+  name: string;
+  description: string;
+  year: number;
+  month: number;
+  date: number;
+  hour: number;
+  minutes: number;
+  color: string;
+};
+
+const todos: Array<Todo> = [
+  {
+    name: 'тестовое',
+    description: 'Описание тестовое',
+    year: 2023,
+    month: 11,
+    date: 11,
+    hour: 12,
+    minutes: 25,
+    color: 'red',
+  },
+];
 
 function createEmptyCells(date: DateObject): ReactNode[] {
   let i: number = 0;
@@ -17,13 +42,23 @@ function createEmptyCells(date: DateObject): ReactNode[] {
   return cells;
 }
 
-function createCells(date: DateObject, cells: ReactNode[]): ReactNode[] {
+function createCells(date: DateObject): ReactNode[] {
+  const cells: ReactNode[] = createEmptyCells(date);
   let i: number;
   const countOfEmptyCells = cells.length;
   for (i = 0; i < getMonthCountOfDays(date.year, date.month); i++) {
-    cells.push(<Cell date={i + 1} key={countOfEmptyCells + i} />);
+    const suitableTodos: Todo[] = todos.filter(todo => {
+      return (
+        todo.year === date.year &&
+        todo.month === date.month &&
+        todo.date === i + 1
+      );
+    });
+    cells.push(
+      <Cell date={i + 1} key={countOfEmptyCells + i} todos={suitableTodos} />,
+    );
   }
-  return cells;
+  return addCellsBreak(cells);
 }
 
 function addCellsBreak(cells: ReactNode[]): ReactNode[] {
@@ -45,7 +80,6 @@ function addCellsBreak(cells: ReactNode[]): ReactNode[] {
 
 function Calendar() {
   const [date, setDate] = useState(createDateObject());
-  console.log(date);
   return (
     <>
       <div className={styles.yearAndMonth}>
@@ -61,7 +95,15 @@ function Calendar() {
       >
         &lt;
       </div>
-      <div onClick={() => console.log('next')}>&gt;</div>
+      <div
+        onClick={() =>
+          setDate(
+            getNextMonthDateObject({ year: date.year, month: date.month }),
+          )
+        }
+      >
+        &gt;
+      </div>
       <table className={styles.calendar}>
         <thead>
           <tr>
@@ -74,9 +116,7 @@ function Calendar() {
             <WeekDayBlock dayOfWeekName={'Вск'} />
           </tr>
         </thead>
-        <tbody>
-          {addCellsBreak(createCells(date, createEmptyCells(date)))}
-        </tbody>
+        <tbody>{createCells(date)}</tbody>
       </table>
     </>
   );
