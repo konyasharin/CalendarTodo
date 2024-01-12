@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Cell.module.css';
 import { Todo } from '../Calendar.tsx';
+import { Link } from 'react-router-dom';
 
 type CellProps = {
   date?: number;
@@ -8,15 +9,15 @@ type CellProps = {
 };
 
 const Cell: React.FC<CellProps> = props => {
-  const test = props.todos?.map((todo: Todo, i: number) => (
-    <button className={styles[todo.color]} key={i}>
+  const buttons = props.todos?.map((todo: Todo, i: number) => (
+    <Link to={`/todos/${todo.id}`} className={styles[todo.color]} key={i}>
       {todo.name}
-    </button>
+    </Link>
   ));
   return (
     <td className={styles.cell}>
       <div className={styles.date}>{props.date}</div>
-      <div>{test}</div>
+      <div className={styles.buttons}>{buttons}</div>
     </td>
   );
 };

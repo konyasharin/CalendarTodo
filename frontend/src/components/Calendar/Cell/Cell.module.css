@@ -5,12 +5,13 @@
     padding: 12px;
 }
 
-.cell button{
+.cell a{
     border: none;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     padding: 3px 4px;
+    text-decoration: none;
 }
 
 .date{
@@ -22,4 +23,8 @@
 .red{
     background-color: rgba(255, 59, 59, .1);
     color: #E92C2C;
+}
+
+.buttons{
+
 }

@@ -8,6 +8,7 @@ import getPrevMonthDateObject from '../../utils/getPrevMonthDateObject.ts';
 import getNextMonthDateObject from '../../utils/getNextMonthDateObject.ts';
 
 export type Todo = {
+  id: number;
   name: string;
   description: string;
   year: number;
@@ -20,6 +21,7 @@ export type Todo = {
 
 const todos: Array<Todo> = [
   {
+    id: 1,
     name: 'тестовое',
     description: 'Описание тестовое',
     year: 2023,
@@ -27,6 +29,17 @@ const todos: Array<Todo> = [
     date: 11,
     hour: 12,
     minutes: 25,
+    color: 'red',
+  },
+  {
+    id: 2,
+    name: 'тестовое-2',
+    description: 'Описание тестовое-2',
+    year: 2024,
+    month: 0,
+    date: 1,
+    hour: 13,
+    minutes: 11,
     color: 'red',
   },
 ];
