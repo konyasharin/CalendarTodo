@@ -1,0 +1,43 @@
+.registration{
+    display: flex;
+    flex-direction: column;
+}
+
+.registration input{
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.registration input:focus{
+    transform: scale(1.05);
+}
+
+.title{
+    text-align: center;
+}
+
+.btn{
+    margin: 0 auto;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: inherit;
+    box-shadow: 5px 5px 5px #969696;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+.btn:active{
+    transform: scale(1);
+}
+
+.link{
+    margin: 20px auto 0;
+}

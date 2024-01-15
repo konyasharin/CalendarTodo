@@ -2,3 +2,18 @@
     font-family: Inter, sans-serif;
     box-sizing: border-box;
 }
+
+h1{
+    font-size: 96px;
+    font-weight: 900;
+}
+
+h2{
+    font-size: 64px;
+    font-weight: 700;
+}
+
+h3{
+    font-size: 48px;
+    font-weight: 700;
+}

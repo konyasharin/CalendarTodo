@@ -1,4 +1,4 @@
-import Calendar from '../components/Calendar/Calendar.tsx';
+import Calendar from '../../components/Calendar/Calendar.tsx';
 
 function MainPage() {
   return <Calendar />;

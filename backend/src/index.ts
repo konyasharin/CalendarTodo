@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cors())
 
 mongoose.connect(CONNECTION_STRING)
-  .then(() => console.log("connect successfull"))
+  .then(() => console.log("connect successfully"))
 
 app.listen(PORT, () => {
   console.log("successfully run")
