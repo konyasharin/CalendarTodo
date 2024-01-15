@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Input from '../../components/Input/Input.tsx';
 import styles from './RegistrationPage.module.css';
-import Button from "../../components/Button/Button.tsx";
-import {Link} from "react-router-dom";
+import Button from '../../components/Button/Button.tsx';
+import { Link } from 'react-router-dom';
+import registration from '../../api/registration.ts';
 
 function RegistrationPage() {
   const [registrationData, setRegistrationData] = useState({
@@ -35,7 +36,14 @@ function RegistrationPage() {
           setRegistrationData({ ...registrationData, repeatPassword: value });
         }}
       />
-      <Button className={styles.btn}>Зарегистрироваться</Button>
+      <Button
+        className={styles.btn}
+        onClick={() =>
+          registration(registrationData.login, registrationData.password)
+        }
+      >
+        Зарегистрироваться
+      </Button>
       <Link to={'/entry'} className={styles.link}>
         Уже есть аккаунт?
       </Link>

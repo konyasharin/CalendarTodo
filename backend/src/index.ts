@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import * as mongoose from "mongoose";
 import * as UserController from './controllers/UserController';
+import CheckAuth from "./middleWares/CheckAuth";
 
 function createConnectionString(login: string, password: string, string: string): string{
   const loginReplace = "<login>"
@@ -28,3 +29,7 @@ app.listen(PORT, () => {
 })
 
 app.post("/auth/registration",  UserController.registration)
+
+app.post("/auth/entry", UserController.entry)
+
+app.get("/auth/me", CheckAuth, UserController.getMe)
